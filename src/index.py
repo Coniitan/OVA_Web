@@ -5,7 +5,7 @@ import os
 
 app = Flask(__name__)
 
-# Configurar la sesión
+# Configurar el secreto de la sesión
 app.secret_key = os.urandom(24)
 
 # Configurar login manager
@@ -13,10 +13,10 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 # Configuración de la base de datos PostgreSQL
-DB_HOST = "postgres.railway.internal"
-DB_NAME = "railway"
-DB_USER = "postgres"
-DB_PASS = "fguXzDjRyZpStiWpSaoGdqVprKgCGDev"
+DB_HOST = "localhost"  # Cambiar si es necesario
+DB_NAME = "ova"  # Cambiar según tu configuración
+DB_USER = "postgres"  # Cambiar según tu configuración
+DB_PASS = "123456789"  # Cambiar según tu configuración
 
 def get_db_connection():
     conn = psycopg2.connect(host=DB_HOST, database=DB_NAME, user=DB_USER, password=DB_PASS)
