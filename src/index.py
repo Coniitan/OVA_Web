@@ -13,10 +13,10 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 # Configuración de la base de datos PostgreSQL
-DB_HOST = "localhost"  # Cambiar si es necesario
-DB_NAME = "ova"  # Cambiar según tu configuración
-DB_USER = "postgres"  # Cambiar según tu configuración
-DB_PASS = "123456789"  # Cambiar según tu configuración
+DB_HOST = "localhost" 
+DB_NAME = "ova"  
+DB_USER = "postgres"  
+DB_PASS = "123456789"  
 
 def get_db_connection():
     conn = psycopg2.connect(host=DB_HOST, database=DB_NAME, user=DB_USER, password=DB_PASS)
@@ -74,8 +74,7 @@ def inicio():
         user = cursor.fetchone()
         conn.close()
         
-        if user and user[3] == contrasena:  # Compara la contraseña con el hash almacenado
-            # Crear el objeto de usuario y hacer login
+        if user and user[3] == contrasena:  
             user_obj = User(id=user[0], codigo=user[0], nombre=user[1], correo=user[2])
             login_user(user_obj)
             return render_template('home.html')
